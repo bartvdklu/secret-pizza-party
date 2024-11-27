@@ -8,7 +8,7 @@ const HomePage: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Secret Pizza Party</title>
+        <title>RSVP FLUFLU DINER</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="theme-color" content="#ccd5ae"/>
       </Head>
@@ -16,11 +16,6 @@ const HomePage: NextPage = () => {
       <main className={styles.main}>
         <Home/>
       </main>
-      <footer className={styles.footer}>
-        <p>
-          A sample project by <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/loige">@loige</a>
-        </p>
-      </footer>
     </div>
   )
 }

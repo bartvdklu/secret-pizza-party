@@ -10,7 +10,7 @@
 }
 
 .subtitle {
-  color: #6c584c;
+  color: #fef3df;
   font-weight: normal;
 }
 
@@ -20,7 +20,7 @@
   text-align: left;
   color: inherit;
   text-decoration: none;
-  background-color: #e9edc9;
+  background-color: #335073;
   border-bottom: 8px solid transparent;
   border-radius: 10px;
   max-width: 600px;
@@ -41,10 +41,10 @@
 
 .fieldset {
   margin: 2em 0;
-  background-color: #dde5b6;
+  background-color: #335073;
   border-radius: 10px;
   padding: 2em;
-  border: 1px solid #dde5b6;
+  border: 1px solid #23334b;
 }
 
 .fieldset legend {
@@ -53,11 +53,11 @@
 }
 
 .fieldset label {
-  font-size: 2em;
+  font-size: 1.5em;
   line-height: 1.1;
   display: grid;
   grid-template-columns: 1em auto;
-  gap: 0.5em;
+  gap: 0.3em;
 }
 
 
@@ -67,6 +67,6 @@
 
 .error {
   text-align: center;
-  font-size: 2em;
-  color: #5f0404;
+  font-size: 1em;
+  color: #fef3df;
 }

@@ -3,9 +3,11 @@ import { Messages } from '../data/messages'
 export interface Invite {
   code: string,
   name: string,
-  favouriteColor: string,
-  weapon: string,
+  lastname: string,
+  email: string,
+  guests: number,
   coming?: boolean,
+  otherDates: any
 }
 
 export interface InviteResponse {

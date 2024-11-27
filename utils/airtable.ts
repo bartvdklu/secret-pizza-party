@@ -76,11 +76,13 @@ export async function getInvite (inviteCode: string): Promise<Invite> {
   return {
     code: String(inviteRecord.fields.invite),
     name: String(inviteRecord.fields.name),
-    favouriteColor: String(inviteRecord.fields.favouriteColor),
-    weapon: String(inviteRecord.fields.weapon),
+    lastname: String(inviteRecord.fields.lastname),
+    email: String(inviteRecord.fields.email),
+    guests: Number(inviteRecord.fields.guests),
     coming: typeof inviteRecord.fields.coming === 'undefined'
       ? undefined
-      : inviteRecord.fields.coming === 'yes'
+      : inviteRecord.fields.coming === 'yes',
+    otherDates: inviteRecord.fields.other_dates
   }
 }
 
@@ -90,6 +92,21 @@ export async function updateRsvp (inviteCode: string, rsvp: boolean): Promise<vo
 
   return new Promise((resolve, reject) => {
     base('invites').update(id, { coming: rsvp ? 'yes' : 'no' }, (err) => {
+      if (err) {
+        return reject(err)
+      }
+
+      resolve()
+    })
+  })
+}
+
+export async function saveRsvp (inviteCode: string, name: string, lastname: string, email: string, guests: number): Promise<void> {
+  // Gets the raw Airtable id of the record to update
+  const { id } = await getInviteRecord(inviteCode)
+
+  return new Promise((resolve, reject) => {
+    base('invites').update(id, { name, lastname, email, guests }, (err) => {
       if (err) {
         return reject(err)
       }

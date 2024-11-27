@@ -1,11 +1,11 @@
 const messages = {
-  title: 'Secret Pizza Party!',
-  date_and_place: 'Dec 31st 2022 - 122 and 1/8th, New York City',
-  invitation: 'You have been invited to the most awesome secret pizza party of the year!',
-  question: 'Are you coming?',
-  answer1: 'Cowabunga! (yes)',
-  answer2: 'Nitwits! (no)',
-  secret_person: 'Shredder'
+  title: 'RSVP Influencer Diner',
+  date_and_place: '22 December 2024 - De Brabantse Winter',
+  invitation: 'Je bent uitgenodigd voor het FLUFLU diner van De Brabantse Winter! Leuk dat je erbij bent en we hopen dat je het naar je zin zal hebben!',
+  instructions: 'Geef hieronder wat meer informatie zodat we je op een later moment beter kunnen informeren.',
+  question: 'Ben je aanwezig?',
+  answer1: 'Ja',
+  answer2: 'Nee'
 }
 
 export type Messages = typeof messages
