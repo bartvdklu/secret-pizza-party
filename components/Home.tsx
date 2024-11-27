@@ -48,13 +48,13 @@ export default function Home () {
           </label>
 
           <label htmlFor="name">
-            <input type="text" id="name" name="name" defaultValue={inviteResponse.invite.name === "undefined" ? '' : inviteResponse.invite.name} placeholder='Voornaam'/>
+            <input type="text" id="name" name="name" defaultValue={inviteResponse.invite.name === 'undefined' ? '' : inviteResponse.invite.name} placeholder='Voornaam'/>
           </label>
           <label htmlFor="lastname">
-            <input type="text" id="lastname" name="lastname" defaultValue={inviteResponse.invite.lastname === "undefined" ? '' : inviteResponse.invite.lastname} placeholder='achternaam'/>
+            <input type="text" id="lastname" name="lastname" defaultValue={inviteResponse.invite.lastname === 'undefined' ? '' : inviteResponse.invite.lastname} placeholder='achternaam'/>
           </label>
           <label htmlFor="email">
-            <input type="email" id="email" name="email" defaultValue={inviteResponse.invite.email === "undefined" ? '' : inviteResponse.invite.email} placeholder='email'/>
+            <input type="email" id="email" name="email" defaultValue={inviteResponse.invite.email === 'undefined' ? '' : inviteResponse.invite.email} placeholder='email'/>
           </label>
           <label htmlFor="guests">
             <input type="number" id="guests" name="guests" defaultValue={inviteResponse.invite.guests} placeholder='aantal gasten'/>
