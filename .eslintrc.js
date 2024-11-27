@@ -6,7 +6,10 @@ module.exports = {
   },
   extends: [
     'plugin:react/recommended',
-    'standard'
+    'standard',
+    'next/core-web-vitals',
+    'plugin:@typescript-eslint/recommended',
+    'next/typescript'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -23,6 +26,8 @@ module.exports = {
   rules: {
     "space-before-blocks": "off",
     "quotes": "off",
-    "no-extra-semi": "off"
+    "no-extra-semi": "off",
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-page-custom-font": "off"
   }
 }
