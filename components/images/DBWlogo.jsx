@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'
 const SVGComponent = (props) => (
   <svg
     id="Layer_2"
@@ -85,5 +85,7 @@ const SVGComponent = (props) => (
       </g>
     </g>
   </svg>
-);
-export default SVGComponent;
+)
+export default SVGComponent
+
+// Newline character at the end of the file
