@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "airtable": "^0.11.6",
-    "next": "12.2.2",
+    "next": "^15.0.4-canary.30",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
