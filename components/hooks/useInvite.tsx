@@ -10,7 +10,7 @@ interface HookResult {
   inviteResponse: InviteResponse | null,
   error: string | null,
   updating: boolean,
-  updateRsvp: (coming: boolean) => Promise<void>
+  updateRsvp: (formData: any) => Promise<void>
 }
 
 // Helper function that invokes the invite API endpoint
@@ -26,7 +26,7 @@ async function fetchInvite (code: string): Promise<InviteResponse> {
 }
 
 // Helper function that invokes the rsvp API endpoint
-async function updateRsvpRequest (code: string, coming: boolean): Promise<void> {
+async function updateRsvpRequest (code: string, formData: any): Promise<void> {  // Update parameter to accept formData
   const requestUrl = new URL(RSVP_ENDPOINT)
   requestUrl.searchParams.append('code', code)
   const response = await fetch(requestUrl, {
@@ -34,10 +34,12 @@ async function updateRsvpRequest (code: string, coming: boolean): Promise<void> 
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ coming })
+    body: JSON.stringify(formData) // Send the complete formData object
   })
   if (!response.ok) {
-    throw new Error('Failed to update RSVP')
+    // More specific error handling could be added here, e.g., checking for different status codes
+    // and returning a more informative error message.
+    throw new Error('Failed to update RSVP: ' + response.statusText)
   }
 }
 
@@ -46,7 +48,7 @@ export default function useInvite (): HookResult {
   // This hook has the inviteResponse and a possilbe error as state.
   const [inviteResponse, setInviteResponse] = useState<InviteResponse | null>(null)
   const [error, setError] = useState<string | null>(null)
-  const [updating, setUpdating] = useState<boolean>(false)
+  const [updating, setUpdating] = useState<any>(false)
 
   // We want to make the API call when the component using the hook
   // is mounted so we use the useEffect hook.
@@ -69,17 +71,23 @@ export default function useInvite (): HookResult {
     }
   }, [])
 
-  async function updateRsvp (coming: boolean) {
+  async function updateRsvp (formData: any) {
     if (inviteResponse) {
       setUpdating(true)
-      await updateRsvpRequest(inviteResponse.invite.code, coming)
-      // updates the current invite response, by cloning the original
-      // object and updating the `coming` property.
-      setInviteResponse({
-        ...inviteResponse,
-        invite: { ...inviteResponse.invite, coming }
-      })
-      setUpdating(false)
+      try {
+        await updateRsvpRequest(inviteResponse.invite.code, formData)
+        // Update the local inviteResponse state with the updated data.  Important to avoid stale closures!
+        setInviteResponse({
+          ...inviteResponse,
+          invite: { ...inviteResponse.invite, ...formData } // Merge formData into the invite
+        })
+      } catch (error) {
+         // Handle errors, perhaps by displaying an error message to the user.
+         console.error("Error updating RSVP:", error);
+         // Consider setting an error state variable to communicate the error to the user.
+      } finally {
+        setUpdating(false)
+      }
     }
   }
 

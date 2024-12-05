@@ -1,7 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { updateRsvp } from '../../utils/airtable'
 
-type RequestBody = {coming?: boolean}
+type RequestBody = {
+  coming?: boolean,
+  name?: string,
+  lastname?: string,
+  email?: string,
+  guests?: number,
+  otherDates?: Array<string>
+}
 
 export default async function handler (
   req: NextApiRequest,
@@ -29,7 +36,14 @@ export default async function handler (
   const code = Array.isArray(req.query.code) ? req.query.code[0] : req.query.code
 
   try {
-    await updateRsvp(code, reqBody.coming)
+    await updateRsvp(code, {
+      coming: reqBody.coming,
+      name: reqBody.name,
+      lastname: reqBody.lastname,
+      email: reqBody.email,
+      guests: reqBody.guests,
+      otherDates: reqBody.otherDates
+    })
     return res.status(200).json({ updated: true })
   } catch (err) {
     // In case of error we return either a 401 or a 500 error:

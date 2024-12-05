@@ -82,35 +82,33 @@ export async function getInvite (inviteCode: string): Promise<Invite> {
     coming: typeof inviteRecord.fields.coming === 'undefined'
       ? undefined
       : inviteRecord.fields.coming === 'yes',
-    otherDates: inviteRecord.fields.other_dates
+    otherDates: inviteRecord.fields.otherDates
+  
   }
 }
 
-export async function updateRsvp (inviteCode: string, rsvp: boolean): Promise<void> {
-  // Gets the raw Airtable id of the record to update
+export async function updateRsvp (inviteCode: string, updatedInvite: Partial<Invite>): Promise<void> {
+
   const { id } = await getInviteRecord(inviteCode)
 
+  const airtableUpdates = {
+    coming: updatedInvite.coming ? 'yes' : 'no', // Still handles boolean conversion
+    name: updatedInvite.name,
+    lastname: updatedInvite.lastname,
+    email: updatedInvite.email,
+    guests: updatedInvite.guests,
+    otherDates: updatedInvite.otherDates // Add other fields as needed
+  }
+
+  // Remove undefined/null values to avoid Airtable errors
+  const cleanedUpdates = Object.fromEntries(Object.entries(airtableUpdates).filter(([_, v]) => v !== undefined && v !== null));
+
+
   return new Promise((resolve, reject) => {
-    base('invites').update(id, { coming: rsvp ? 'yes' : 'no' }, (err) => {
+    base('invites').update(id, cleanedUpdates, (err: any) => {
       if (err) {
         return reject(err)
       }
-
-      resolve()
-    })
-  })
-}
-
-export async function saveRsvp (inviteCode: string, name: string, lastname: string, email: string, guests: number): Promise<void> {
-  // Gets the raw Airtable id of the record to update
-  const { id } = await getInviteRecord(inviteCode)
-
-  return new Promise((resolve, reject) => {
-    base('invites').update(id, { name, lastname, email, guests }, (err) => {
-      if (err) {
-        return reject(err)
-      }
-
       resolve()
     })
   })
