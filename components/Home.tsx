@@ -5,8 +5,8 @@ import ErrorImage from './images/Error'
 import styles from './Home.module.css'
 
 const formatDate = (date: Date): string => {
-  return date.toLocaleDateString('nl-NL', { day: '2-digit', month: 'long', year: 'numeric' });
-};
+  return date.toLocaleDateString('nl-NL', { day: '2-digit', month: 'long', year: 'numeric' })
+}
 
 export default function Home () {
   const { inviteResponse, error, updating, updateRsvp } = useInvite()
@@ -19,18 +19,11 @@ export default function Home () {
     otherDates: [] as string[] // Initialize as empty array
   })
 
-  if (error) {
-    return <div className={styles.error}>
-      <p><ErrorImage width={200}/></p>
-      <p>Geen code toegevoegd!</p>
-    </div>
-  }
-
   // Populate form data with initial values from inviteResponse
   useEffect(() => {
     if (inviteResponse) {
       setFormData({
-        coming: inviteResponse.invite.coming ?? true,  // Handle potential undefined
+        coming: inviteResponse.invite.coming ?? true, // Handle potential undefined
         name: inviteResponse.invite.name === 'undefined' ? '' : inviteResponse.invite.name,
         lastname: inviteResponse.invite.lastname === 'undefined' ? '' : inviteResponse.invite.lastname,
         email: inviteResponse.invite.email === 'undefined' ? '' : inviteResponse.invite.email,
@@ -40,10 +33,16 @@ export default function Home () {
     }
   }, [inviteResponse])
 
+  if (error) {
+    return <div className={styles.error}>
+      <p><ErrorImage width={200}/></p>
+      <p>Geen code toegevoegd!</p>
+    </div>
+  }
+
   if (!inviteResponse) {
     return <LogoImage className="spin" width={200} />
   }
-
 
   function handleChange (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
     const { name, value, type, checked } = e.target as HTMLInputElement
@@ -52,13 +51,12 @@ export default function Home () {
       setFormData(prevFormData => {
         const updatedOtherDates = checked
           ? [...prevFormData.otherDates, value]
-          : prevFormData.otherDates.filter(date => date !== value);
-        return { ...prevFormData, otherDates: updatedOtherDates };
-      });
-
+          : prevFormData.otherDates.filter(date => date !== value)
+        return { ...prevFormData, otherDates: updatedOtherDates }
+      })
     } else {
       // Existing handling for other input types
-       const parsedValue = name === 'guests' ? parseInt(value, 10) : value
+      const parsedValue = name === 'guests' ? parseInt(value, 10) : value
 
       setFormData({
         ...formData,
@@ -77,23 +75,24 @@ export default function Home () {
   }
 
   // Generate date options, skipping December 22nd
-  const currentDate = new Date('2024-12-21');
-  const endDate = new Date('2025-01-05');
-  const dateOptions: { value: string; label: string }[] = [];
+  const currentDate = new Date('2024-12-21')
+  const endDate = new Date('2025-01-05')
+  const dateOptions: { value: string; label: string }[] = []
 
+  /* eslint-disable no-unmodified-loop-condition */
   while (currentDate <= endDate) {
-    const day = currentDate.getDate();
-    const month = currentDate.getMonth() + 1; // Month is 0-indexed
-    const year = currentDate.getFullYear();
+    const day = currentDate.getDate()
+    const month = currentDate.getMonth() + 1 // Month is 0-indexed
 
     // Skip December 22nd
     if (!(month === 12 && day === 22)) {
       dateOptions.push({
         value: formatDate(currentDate),
-        label: formatDate(currentDate),
-      });
+        label: formatDate(currentDate)
+      })
     }
-    currentDate.setDate(currentDate.getDate() + 1);
+    currentDate.setDate(currentDate.getDate() + 1)
+    /* eslint-disable no-unmodified-loop-condition */
   }
 
   return (
@@ -137,7 +136,7 @@ export default function Home () {
                 </label>
               </div>
             </div>
-          {!formData.coming &&(
+          {!formData.coming && (
             <div>
               <p>Kun jij er helaas niet bij zijn op 22 december? Dan willen we je graag een dagticket bieden voor een andere dag! Laat hieronder weten wanneer. De Brabantse Winter is van 21 december ’24 t/m 5 januari ’25 geopend!</p>
           <div>
@@ -156,8 +155,6 @@ export default function Home () {
           </div>
           </div>
           )}
-            
-            
             <br/>
             <button type="submit" disabled={updating}>
               Submit
@@ -167,4 +164,3 @@ export default function Home () {
     </>
   )
 }
-

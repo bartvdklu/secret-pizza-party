@@ -26,7 +26,7 @@ async function fetchInvite (code: string): Promise<InviteResponse> {
 }
 
 // Helper function that invokes the rsvp API endpoint
-async function updateRsvpRequest (code: string, formData: any): Promise<void> {  // Update parameter to accept formData
+async function updateRsvpRequest (code: string, formData: any): Promise<void> { // Update parameter to accept formData
   const requestUrl = new URL(RSVP_ENDPOINT)
   requestUrl.searchParams.append('code', code)
   const response = await fetch(requestUrl, {
@@ -82,9 +82,9 @@ export default function useInvite (): HookResult {
           invite: { ...inviteResponse.invite, ...formData } // Merge formData into the invite
         })
       } catch (error) {
-         // Handle errors, perhaps by displaying an error message to the user.
-         console.error("Error updating RSVP:", error);
-         // Consider setting an error state variable to communicate the error to the user.
+        // Handle errors, perhaps by displaying an error message to the user.
+        console.error("Error updating RSVP:", error)
+        // Consider setting an error state variable to communicate the error to the user.
       } finally {
         setUpdating(false)
       }
