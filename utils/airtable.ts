@@ -82,7 +82,7 @@ export async function getInvite (inviteCode: string): Promise<Invite> {
     coming: typeof inviteRecord.fields.coming === 'undefined'
       ? undefined
       : inviteRecord.fields.coming === 'yes',
-    otherDates: inviteRecord.fields.otherDates
+    otherDates: inviteRecord.fields.otherDates as string[]
   
   }
 }

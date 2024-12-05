@@ -30,7 +30,7 @@ export default function Home () {
   useEffect(() => {
     if (inviteResponse) {
       setFormData({
-        coming: inviteResponse.invite.coming || true,  // Handle potential undefined
+        coming: inviteResponse.invite.coming ?? true,  // Handle potential undefined
         name: inviteResponse.invite.name === 'undefined' ? '' : inviteResponse.invite.name,
         lastname: inviteResponse.invite.lastname === 'undefined' ? '' : inviteResponse.invite.lastname,
         email: inviteResponse.invite.email === 'undefined' ? '' : inviteResponse.invite.email,
