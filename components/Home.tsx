@@ -122,7 +122,7 @@ export default function Home () {
           </div>
             <label htmlFor="guests">
               <h4>Met hoeveel personen wil je komen? Vul dat hieronder in:</h4>
-              <input type="number" id="guests" name="guests" value={formData.guests} onChange={handleChange} placeholder='aantal gasten' max={5}/>
+              <input type="number" id="guests" name="guests" value={formData.guests} onChange={handleChange} placeholder='aantal gasten' min={1} max={5}/>
             </label>
             <div>
               <h4>Ben je aanwezig?</h4>

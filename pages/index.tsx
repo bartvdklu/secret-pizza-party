@@ -15,12 +15,9 @@ const HomePage: NextPage = () => {
 
         <meta property="og:title" content="RSVP DE BRABANTSE WINTER DINER" />
         <meta property="og:description" content="Wat leuk je hier te zien! Zorg dat je de RSVP invult om je reservering voor een verzorgde avond op 22 december ’24 compleet te maken." />
-        <meta property="og:image" content="YOUR_WEBSITE_IMAGE_URL" />
+        <meta property="og:image" content="https://debrabantsewinter.nl/wp-content/uploads/2024/12/DSCF5205-scaled.jpg" />
 
         <meta property="og:site_name" content="De Brabantse Winter" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE" />
         <meta name="twitter:title" content="RSVP DE BRABANTSE WINTER DINER" />
         <meta name="twitter:description" content="RSVP for the Brabantse Winter Diner" />
         <meta name="twitter:image" content="https://debrabantsewinter.nl/wp-content/uploads/2024/12/DSCF5205-scaled.jpg" />
