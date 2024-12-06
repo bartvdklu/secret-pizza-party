@@ -8,10 +8,29 @@ const HomePage: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>RSVP FLUFLU DINER</title>
+        <title>RSVP DE BRABANTSE WINTER DINER</title>
         <link rel="icon" href="/favicon.ico" />
         <link rel="stylesheet" href="https://use.typekit.net/rbr6dxl.css"/>
         <meta name="theme-color" content="#ccd5ae"/>
+
+        <meta property="og:title" content="RSVP DE BRABANTSE WINTER DINER" />
+        <meta property="og:description" content="Wat leuk je hier te zien! Zorg dat je de RSVP invult om je reservering voor een verzorgde avond op 22 december ’24 compleet te maken." />
+        <meta property="og:image" content="YOUR_WEBSITE_IMAGE_URL" />
+
+        <meta property="og:site_name" content="De Brabantse Winter" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE" />
+        <meta name="twitter:title" content="RSVP DE BRABANTSE WINTER DINER" />
+        <meta name="twitter:description" content="RSVP for the Brabantse Winter Diner" />
+        <meta name="twitter:image" content="https://debrabantsewinter.nl/wp-content/uploads/2024/12/DSCF5205-scaled.jpg" />
+
+
+        {/* Facebook */}
+        <meta property="og:url" content="https://www.facebook.com/debrabantsewinter" />
+
+        {/* Instagram */}
+        <meta property="instagram:url" content="https://www.instagram.com/brabantsewinter/" />
       </Head>
 
       <main className={styles.main}>
