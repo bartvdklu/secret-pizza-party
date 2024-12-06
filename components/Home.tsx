@@ -159,11 +159,14 @@ export default function Home () {
           )}
             <br/>
             <button type="submit" disabled={updating}>
-            {updateDone && !updating ? (
-              'RSVP is succesvol verstuurd!'
-            ) : updating ? (
-              'Verzenden...'
-            ) : updateDone ? 'RSVP is niet succesvol verstuurd. Neem contact op met info@debrabantsewinter.nl' : 'VERSTUUR RSVP' }
+            {updateDone && !updating
+              ? ('RSVP is succesvol verstuurd!')
+              : updating
+                ? ('Verzenden...')
+                : updateDone
+                  ? 'RSVP is niet succesvol verstuurd. Neem contact op met info@debrabantsewinter.nl'
+                  : 'VERSTUUR RSVP'
+            }
             </button>
         </form>
         <LogoImage width={200}/>
