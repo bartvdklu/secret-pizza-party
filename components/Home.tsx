@@ -101,7 +101,7 @@ export default function Home () {
       <div className={styles.card}>
         <h1>Hi{inviteResponse.invite.name === 'undefined' ? '' : ' ' + inviteResponse.invite.name}!</h1>
         <p className={styles.message}>Wat leuk je hier te zien!</p>
-        <p className={styles.message}>Vul hieronder je gegevens in om de reservering voor een verzorgde avond op AIRTABLE_API_KEY22 december '24 compleet te maken ✨</p>
+        <p className={styles.message}>Vul hieronder je gegevens in om de reservering voor een verzorgde avond op 22 december '24 compleet te maken ✨</p>
 
         <form onSubmit={handleSubmit}>
           <div className={styles.formGroup} id={styles.names}>
