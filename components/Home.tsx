@@ -97,34 +97,36 @@ export default function Home () {
 
   return (
     <>
-      <LogoImage width={200}/>
-      <h1 className={styles.title}>{inviteResponse.messages.title}</h1>
-      <h2 className={styles.subtitle}>{inviteResponse.messages.date_and_place}</h2>
 
       <div className={styles.card}>
-        <h3>Hi<strong>{inviteResponse.invite.name === 'undefined' ? '' : ' ' + inviteResponse.invite.name}</strong>!</h3>
-        <p>Wat leuk je hier te zien! Als je deze vragen hieronder even invult, is je reservering voor een verzorgde avond op 22 december ’24 compleet. ✨</p>
+        <h1>Hi{inviteResponse.invite.name === 'undefined' ? '' : ' ' + inviteResponse.invite.name}!</h1>
+        <p className={styles.message}>Wat leuk je hier te zien!</p>
+        <p className={styles.message}>Als je deze vragen hieronder even invult,<br/> is je reservering voor een verzorgde avond op <br/>22 december ’24 compleet. ✨</p>
 
         <form onSubmit={handleSubmit}>
+          <div className={styles.formGroup} id={styles.names}>
             <label htmlFor="name">
-              <p>Voornaam:</p>
+              <h4>Voornaam:</h4>
               <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} placeholder='Voornaam'/>
             </label>
             <label htmlFor="lastname">
-              <p>Achternaam:</p>
+              <h4>Achternaam:</h4>
               <input type="text" id="lastname" name="lastname" value={formData.lastname} onChange={handleChange} placeholder='achternaam'/>
             </label>
+          </div>
+          <div className={styles.formGroup} id={styles.email}>
             <label htmlFor="email">
-              <p>Email:</p>
+              <h4>Email:</h4>
               <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} placeholder='email'/>
             </label>
+          </div>
             <label htmlFor="guests">
-              <p>Met hoeveel personen wil je komen? Vul dat hieronder in:</p>
+              <h4>Met hoeveel personen wil je komen? Vul dat hieronder in:</h4>
               <input type="number" id="guests" name="guests" value={formData.guests} onChange={handleChange} placeholder='aantal gasten' max={5}/>
             </label>
             <div>
-              <p>Ben je aanwezig?</p>
-              <div>
+              <h4>Ben je aanwezig?</h4>
+              <div className={styles.formGroup} id={styles.radioGroup}>
                 <label htmlFor="yes">
                   <input type="radio" id="yes" name="coming" value="yes" checked={formData.coming} onChange={handleChange} />
                   {inviteResponse.messages.answer1}
@@ -137,9 +139,9 @@ export default function Home () {
               </div>
             </div>
           {!formData.coming && (
-            <div>
+            <div className={styles.notComingContainer}>
               <p>Kun jij er helaas niet bij zijn op 22 december? Dan willen we je graag een dagticket bieden voor een andere dag! Laat hieronder weten wanneer. De Brabantse Winter is van 21 december ’24 t/m 5 januari ’25 geopend!</p>
-          <div>
+          <div className={styles.datesGroup}>
             {dateOptions.map((option) => (
               <label key={option.value}>
                 <input
@@ -157,9 +159,10 @@ export default function Home () {
           )}
             <br/>
             <button type="submit" disabled={updating}>
-              Submit
+              VERSTUUR RSVP
             </button>
         </form>
+        <LogoImage width={200}/>
       </div>
     </>
   )

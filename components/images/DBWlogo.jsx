@@ -8,7 +8,7 @@ const SVGComponent = (props) => (
     {...props}
   >
     <defs>
-      <style>{'\n      .cls-1 {\n        fill: #fff;\n      }\n    '}</style>
+      <style>{'\n      .cls-1 {\n        fill: #000;\n      }\n    '}</style>
     </defs>
     <g id="Laag_1" data-name="Laag 1">
       <g>

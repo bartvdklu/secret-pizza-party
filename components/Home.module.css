@@ -1,30 +1,29 @@
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
-}
-
-.title,
-.subtitle {
-  text-align: center;
-}
-
-.subtitle {
-  color: #fef3df;
-  font-weight: normal;
-}
-
 .card {
   margin: 1rem;
-  padding: 1.5rem;
+  padding: 3rem;
   text-align: left;
   color: inherit;
   text-decoration: none;
-  background-color: #335073;
-  border-bottom: 8px solid transparent;
-  border-radius: 10px;
+  background-image: url(./images/33.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   max-width: 600px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+}
+
+.card svg{
+  margin-top: 50px;
+}
+
+.card h1{
+  margin: 1rem 0 1rem 0;
+  font-size: 3rem;
+  font-weight: normal;
 }
 
 .card h3 {
@@ -36,33 +35,62 @@
 .card p {
   margin: 0;
   font-size: 1.25rem;
-  line-height: 2;
+  line-height: auto;
 }
 
-.fieldset {
-  margin: 2em 0;
-  background-color: #335073;
-  border-radius: 10px;
-  padding: 2em;
-  border: 1px solid #23334b;
+.card .message{
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-.fieldset legend {
-  font-size: 1.5em;
-  font-weight: bold;
+.formGroup{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
 }
 
-.fieldset label {
-  font-size: 1.5em;
-  line-height: 1.1;
-  display: grid;
-  grid-template-columns: 1em auto;
-  gap: 0.3em;
+#names label{
+  width: 45%;
 }
 
+#radioGroup{
+  width: 30%;
+}
 
-.fieldset input {
-  font-size: 1em;
+#radioGroup label{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+#radioGroup label input{
+  margin-right: 5px;
+}
+
+.formGroup label{
+  width: 100%;
+}
+
+.notComingContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.datesGroup{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 275px;
+}
+
+.datesGroup label{
+  width: 45%;
+  margin: 5px 0 5px 0;
 }
 
 .error {

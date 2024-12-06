@@ -10,6 +10,7 @@ const HomePage: NextPage = () => {
       <Head>
         <title>RSVP FLUFLU DINER</title>
         <link rel="icon" href="/favicon.ico" />
+        <link rel="stylesheet" href="https://use.typekit.net/rbr6dxl.css"/>
         <meta name="theme-color" content="#ccd5ae"/>
       </Head>
 

@@ -1,12 +1,12 @@
 :root {
-  --form-control-color: #6c584c;
+  --form-control-color: #dc5743;
 }
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  font-family: brandon-grotesque, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: #23334b;
   background-image: url(../components/images/DBW24_Background.jpg);
@@ -14,6 +14,17 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   color: #fef3df;
+}
+
+h1,
+h2,
+h3,
+h4, 
+h5, 
+h6 {
+  font-family: moret, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: #ea5b46;
 }
 
 a {
@@ -60,6 +71,7 @@ input[type="radio"]::before {
   border-radius: 50%;
   transform: scale(0);
   transition: 5ms transform ease-in-out;
+  border: 0.15em solid var(--form-control-color);
   box-shadow: inset 1em 1em var(--form-control-color);
 }
 
@@ -68,13 +80,45 @@ input[type="radio"]:checked::before {
 }
 
 input[type="text"], input[type="email"] {
-  background-color: #fff;
-  min-width: 300px;
-  border: 0.15em solid #23334b;
+  background-color: transparent;
+  width: 100%;
+  border: none;
+  border-bottom: 0.15em solid #23334b;
 }
 
 input[type="number"]{
-  background-color: #fff;
+  background-color: transparent;
   min-width: 200px;
-  border: 0.15em solid #23334b;
+  border: none;
+  border-bottom: 0.15em solid #23334b;
+}
+
+form{
+  width: 100%;
+}
+
+form h4{
+  color:#1e273e;
+  margin: 1.5rem 0 0.1rem 0;
+}
+
+input:focus{
+  outline: none !important;
+  border-bottom: 0.15em solid #dc5743;
+}
+
+button{
+  font-family: moret, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 20px;
+    font-weight: 100;
+  color: #fff;
+  border: none;
+  background: linear-gradient(97.95deg, #F1B513 0%, #FFE8A6 14.37%, #F1B513 25.86%, #D5A84A 47.12%, #D5A84A 70.1%, #F1B513 76.42%, #F8DE98 87.91%, #F1B513 95.96%);
+  padding: 12px 24px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 1;
+  display: inline-block;
+  width: 100%;
 }
