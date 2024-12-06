@@ -25,7 +25,6 @@ const HomePage: NextPage = () => {
         <meta name="twitter:description" content="RSVP for the Brabantse Winter Diner" />
         <meta name="twitter:image" content="https://debrabantsewinter.nl/wp-content/uploads/2024/12/DSCF5205-scaled.jpg" />
 
-
         {/* Facebook */}
         <meta property="og:url" content="https://www.facebook.com/debrabantsewinter" />
 
