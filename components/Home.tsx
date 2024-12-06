@@ -9,7 +9,7 @@ const formatDate = (date: Date): string => {
 }
 
 export default function Home () {
-  const { inviteResponse, error, updating, updateRsvp } = useInvite()
+  const { inviteResponse, error, updating, updateDone, updateRsvp } = useInvite()
   const [formData, setFormData] = useState({
     coming: true,
     name: '',
@@ -159,7 +159,11 @@ export default function Home () {
           )}
             <br/>
             <button type="submit" disabled={updating}>
-              VERSTUUR RSVP
+            {updateDone && !updating ? (
+              'RSVP is succesvol verstuurd!'
+            ) : updating ? (
+              'Verzenden...'
+            ) : updateDone ? 'RSVP is niet succesvol verstuurd. Neem contact op met info@debrabantsewinter.nl' : 'VERSTUUR RSVP' }
             </button>
         </form>
         <LogoImage width={200}/>

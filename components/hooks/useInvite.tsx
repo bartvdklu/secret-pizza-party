@@ -10,6 +10,7 @@ interface HookResult {
   inviteResponse: InviteResponse | null,
   error: string | null,
   updating: boolean,
+  updateDone: boolean,
   updateRsvp: (formData: any) => Promise<void>
 }
 
@@ -49,6 +50,7 @@ export default function useInvite (): HookResult {
   const [inviteResponse, setInviteResponse] = useState<InviteResponse | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [updating, setUpdating] = useState<any>(false)
+  const [updateDone, setUpdateDone] = useState<any>(false)
 
   // We want to make the API call when the component using the hook
   // is mounted so we use the useEffect hook.
@@ -85,12 +87,14 @@ export default function useInvite (): HookResult {
         // Handle errors, perhaps by displaying an error message to the user.
         console.error("Error updating RSVP:", error)
         // Consider setting an error state variable to communicate the error to the user.
+        setUpdateDone(false)
       } finally {
         setUpdating(false)
+        setUpdateDone(true)
       }
     }
   }
 
   // We return the state variables and the updateRsvp function.
-  return { inviteResponse, error, updating, updateRsvp }
+  return { inviteResponse, error, updating, updateDone, updateRsvp }
 }

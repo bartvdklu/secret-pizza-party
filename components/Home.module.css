@@ -98,3 +98,28 @@
   font-size: 1em;
   color: #fef3df;
 }
+
+
+
+#success, #loading{
+  color: #1e273e
+}
+
+#error{
+  color: #dc5743;
+}
+
+@media screen and (max-width: 600px) {
+  .datesGroup{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 500px;
+  }
+  .datesGroup label{
+    width: 100%;
+    margin: 5px 0 5px 0;
+  }
+}
