@@ -7,7 +7,8 @@ export interface Invite {
   email: string,
   guests: number,
   coming?: boolean,
-  otherDates: string[]
+  otherDates: string[],
+  tickettype?: boolean,
 }
 
 export interface InviteResponse {

@@ -82,6 +82,9 @@ export async function getInvite (inviteCode: string): Promise<Invite> {
     coming: typeof inviteRecord.fields.coming === 'undefined'
       ? undefined
       : inviteRecord.fields.coming === 'yes',
+    tickettype: typeof inviteRecord.fields.tickettype === 'undefined'
+      ? undefined
+      : inviteRecord.fields.tickettype === 'Ik wil alleen in de avond komen met mijn gezelschap',
     otherDates: inviteRecord.fields.otherDates as string[]
   
   }
@@ -97,7 +100,8 @@ export async function updateRsvp (inviteCode: string, updatedInvite: Partial<Inv
     lastname: updatedInvite.lastname,
     email: updatedInvite.email,
     guests: updatedInvite.guests,
-    otherDates: updatedInvite.otherDates // Add other fields as needed
+    otherDates: updatedInvite.otherDates, // Add other fields as needed
+    tickettype: updatedInvite.tickettype ? 'Ik wil alleen in de avond komen met mijn gezelschap' : 'Ik wil graag al overdag komen met mijn gezelschap',
   }
 
   // Remove undefined/null values to avoid Airtable errors

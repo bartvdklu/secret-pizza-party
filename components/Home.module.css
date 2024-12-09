@@ -34,7 +34,7 @@
 
 .card p {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   line-height: auto;
 }
 
@@ -52,6 +52,27 @@
 
 #names label{
   width: 45%;
+}
+
+#ticketGroup{
+  margin-top: 5px;
+}
+
+.infoblock{
+  padding: 6px 12px;
+  position: absolute;
+  background-color: #dc58436c;
+  font-size: 0.75rem;
+}
+
+#ticketGroup label{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+#ticketGroup label input{
+  margin-right: 5px;
 }
 
 #radioGroup{

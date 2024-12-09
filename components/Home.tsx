@@ -16,7 +16,8 @@ export default function Home () {
     lastname: '',
     email: '',
     guests: 1,
-    otherDates: [] as string[] // Initialize as empty array
+    otherDates: [] as string[], // Initialize as empty array
+    tickettype: true
   })
 
   // Populate form data with initial values from inviteResponse
@@ -28,7 +29,8 @@ export default function Home () {
         lastname: inviteResponse.invite.lastname === 'undefined' ? '' : inviteResponse.invite.lastname,
         email: inviteResponse.invite.email === 'undefined' ? '' : inviteResponse.invite.email,
         guests: inviteResponse.invite.guests || 1,
-        otherDates: inviteResponse.invite.otherDates || []
+        otherDates: inviteResponse.invite.otherDates || [],
+        tickettype: inviteResponse.invite.tickettype ?? true
       })
     }
   }, [inviteResponse])
@@ -61,7 +63,8 @@ export default function Home () {
       setFormData({
         ...formData,
         [name]: parsedValue,
-        coming: name === 'coming' ? (value === 'yes') : formData.coming
+        coming: name === 'coming' ? (value === 'yes') : formData.coming,
+        tickettype: name === 'tickettype' ? (value === 'Ik wil alleen in de avond komen met mijn gezelschap') : formData.tickettype
       })
     }
     console.log(formData)
@@ -138,6 +141,30 @@ export default function Home () {
                 </label>
               </div>
             </div>
+            {formData.coming && (
+            <div>
+              <h4>Ticket(s) voor 22 december 2024:</h4>
+              <p>Je bent in de avond van harte welkom! Wil je overdag ook komen genieten, dat kan! Geef hier je voorkeur op:</p>
+                <div className={styles.formGroup} id={styles.ticketGroup}>
+                  <label htmlFor="eveningTicket">
+                    <input type="radio" id="eveningTicket" name="tickettype" value="Ik wil alleen in de avond komen met mijn gezelschap" checked={formData.tickettype} onChange={handleChange} />
+                    Ik wil alleen in de avond komen met mijn gezelschap
+                  </label>
+
+                  <label htmlFor="dayTicket">
+                    <input type="radio" id="dayTicket" name="tickettype" value="Ik wil graag al overdag komen met mijn gezelschap" checked={!formData.tickettype} onChange={handleChange} />
+                    <div id={styles.altLabel}>
+                      Ik wil graag al overdag komen met mijn gezelschap
+                    {!formData.tickettype && (
+                      <div className={styles.infoblock}>
+                        Let op! Je moet vóór 16:00 binnen zijn.
+                      </div>
+                    )}
+                    </div>
+                  </label>
+                </div>
+            </div>
+            )}
           {!formData.coming && (
             <div className={styles.notComingContainer}>
               <p>Kun jij er helaas niet bij zijn op 22 december? Dan willen we je graag een dagticket bieden voor een andere dag! Laat hieronder weten wanneer. De Brabantse Winter is van 21 december ’24 t/m 5 januari ’25 geopend!</p>

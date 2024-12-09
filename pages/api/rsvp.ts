@@ -7,7 +7,8 @@ type RequestBody = {
   lastname?: string,
   email?: string,
   guests?: number,
-  otherDates?: Array<string>
+  otherDates?: Array<string>,
+  tickettype?: boolean,
 }
 
 export default async function handler (
@@ -42,7 +43,8 @@ export default async function handler (
       lastname: reqBody.lastname,
       email: reqBody.email,
       guests: reqBody.guests,
-      otherDates: reqBody.otherDates
+      otherDates: reqBody.otherDates,
+      tickettype: reqBody.tickettype
     })
     return res.status(200).json({ updated: true })
   } catch (err) {
