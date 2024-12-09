@@ -168,6 +168,9 @@ export default function Home () {
           {!formData.coming && (
             <div className={styles.notComingContainer}>
               <p>Kun jij er helaas niet bij zijn op 22 december? Dan willen we je graag een dagticket bieden voor een andere dag! Laat hieronder weten wanneer. De Brabantse Winter is van 21 december ’24 t/m 5 januari ’25 geopend!</p>
+              <div className={styles.infoblock} id={styles.infoRelative}>
+                Let op: Je ontvang dagtickets met deze tickets moet je vóór 16:00 binnen zijn!
+              </div>
           <div className={styles.datesGroup}>
             {dateOptions.map((option) => (
               <label key={option.value}>
